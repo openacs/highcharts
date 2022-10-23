@@ -1,0 +1,1 @@
+::highcharts::register_urns

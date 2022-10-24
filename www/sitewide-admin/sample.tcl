@@ -6,20 +6,12 @@ ad_page_contract {
 } {
 }
 
-set resource_info [::bootstrap_icons::resource_info]
-
 set title "Highcharts Sample Page"
 set context [list [list "." "Highcharts"] $title]
 
 #
-# Collect generic names
+# Include Generic URLs (based on URN)
 #
-
-#
-# Generic URL for CSS (based on URN)
-#
-#set CSS_URL urn:ad:css:bootstrap-icons
-
 template::add_body_script -src urn:ad:js:highcharts
 template::add_body_script -src urn:ad:js:highcharts-more
 template::add_body_script -src urn:ad:js:highcharts/modules/exporting

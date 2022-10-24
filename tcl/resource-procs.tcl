@@ -7,7 +7,6 @@ ad_library {
     ::highcharts::resource_info
     ::highcharts::download
 
-
     @author Gustaf Neumann
     @creation-date 23 Oct 2022
 }
@@ -50,7 +49,7 @@ namespace eval ::highcharts {
         set resourceUrl /resources/highcharts/$version
         set cdnHost     cdnjs.cloudflare.com
         set cdn         //$cdnHost/
-        
+
         if {[file exists $resourceDir/$version]} {
             #
             # Local version is installed
@@ -70,11 +69,9 @@ namespace eval ::highcharts {
             #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/modules/exporting.js
             #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/modules/exporting.min.js
             #
-            # We just need the CSS file, which is on the CDN in the
-            # "font" directory.
             set prefix ${cdn}ajax/libs/highcharts/$version
             set cspMap [subst {
-                urn:ad:css:highcharts {
+                urn:ad:js:highcharts {
                     script-src $cdnHost
                 }}]
             #
@@ -172,7 +169,8 @@ namespace eval ::highcharts {
             dict set urns urn:ad:js:highcharts $prefix/highcharts.min.js
             dict set urns urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
             dict set urns urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
-            
+            dict set urns urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
+
         } else {
             #
             # Settings for local installs
@@ -180,6 +178,7 @@ namespace eval ::highcharts {
             dict set urns urn:ad:js:highcharts $prefix/highcharts.js
             dict set urns urn:ad:js:highcharts-more $prefix/highcharts-more.js
             dict set urns urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
+            dict set urns urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
         }
 
         foreach {URN resource} $urns {
@@ -189,7 +188,7 @@ namespace eval ::highcharts {
                 -csp_list [expr {[dict exists $resource_info cspMap $URN]
                                  ? [dict get $resource_info cspMap $URN]
                                  : ""}]
-        }        
+        }
     }
 }
 

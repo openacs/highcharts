@@ -100,8 +100,8 @@ namespace eval ::highcharts {
                 https://code.highcharts.com/zips/Highcharts-$version.zip
             }] \
             cspMap $cspMap \
-            urnMap {}
-
+            urnMap {} \
+            versionCheckURL "https://cdnjs.com/libraries?q=highcharts"
 
         return $result
     }

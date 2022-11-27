@@ -147,7 +147,7 @@ namespace eval ::highcharts {
         }
 
         #
-        # So far, everything is fine, unpack the dowloaded zip file
+        # So far, everything is fine, unpack the downloaded zip file
         #
         foreach url [dict get $resource_info downloadURLs] {
             set fn [file tail $url]
@@ -168,22 +168,22 @@ namespace eval ::highcharts {
             #
             # Settings for the CDN, in case it differs
             #
-            dict set urns urn:ad:js:highcharts $prefix/highcharts.min.js
-            dict set urns urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
-            dict set urns urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
-            dict set urns urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
+            dict set URNs urn:ad:js:highcharts $prefix/highcharts.min.js
+            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
 
         } else {
             #
             # Settings for local installs
             #
-            dict set urns urn:ad:js:highcharts $prefix/highcharts.js
-            dict set urns urn:ad:js:highcharts-more $prefix/highcharts-more.js
-            dict set urns urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
-            dict set urns urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
+            dict set URNs urn:ad:js:highcharts $prefix/highcharts.js
+            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
         }
 
-        foreach {URN resource} $urns {
+        foreach {URN resource} $URNs {
             template::register_urn \
                 -urn $URN \
                 -resource $resource \

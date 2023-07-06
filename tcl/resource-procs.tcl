@@ -20,14 +20,14 @@ namespace eval ::highcharts {
     # configuration file:
     #
     #    ns_section ns/server/${server}/acs/highcharts
-    #        ns_param HighchartsVersion 10.3.1
+    #        ns_param HighchartsVersion 11.0.1
     #
     #  For new versions, checkout https://cdnjs.com/
     #
     set ::highcharts::version [parameter::get \
                                    -package_id $package_id \
                                    -parameter HighchartsVersion \
-                                   -default 10.3.1]
+                                   -default 11.0.1]
 
     ad_proc ::highcharts::resource_info {
         {-version ""}

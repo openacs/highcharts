@@ -7,5 +7,9 @@
 
 <include src="/packages/acs-templating/lib/registered-urns" match="*:highcharts*">
 
-<p>For developer information, look into the <a href="https://www.highcharts.com/docs/index">Highcharts Manual</a>.
-<p>For a quick test, check the <a href="sample">Sample page</a>.
+<strong>Additional Resources:</strong>
+<ul>
+<li>For version info, look into the <a href="https://www.highcharts.com/blog/changelog/">Highcharts Changelog</a>.</li>
+<li>For developer information, look into the <a href="https://www.highcharts.com/docs/index">Highcharts Manual</a>.</li>
+<li>For a quick test, check the <a href="sample">Sample page</a>.</li>
+</ul>

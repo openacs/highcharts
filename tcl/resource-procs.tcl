@@ -27,7 +27,7 @@ namespace eval ::highcharts {
     set ::highcharts::version [parameter::get \
                                    -package_id $package_id \
                                    -parameter HighchartsVersion \
-                                   -default 11.0.1]
+                                   -default 11.2.0]
 
     ad_proc ::highcharts::resource_info {
         {-version ""}

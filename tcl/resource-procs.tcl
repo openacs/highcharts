@@ -101,7 +101,9 @@ namespace eval ::highcharts {
             }] \
             cspMap $cspMap \
             urnMap {} \
-            versionCheckURL "https://cdnjs.com/libraries?q=highcharts"
+            versionCheckURL https://cdnjs.com/libraries/highcharts \
+            versionCheckAPI {cdn cdnjs library highcharts count 5} \
+            installedVersion $version
 
         return $result
     }

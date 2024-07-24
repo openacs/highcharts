@@ -63,14 +63,6 @@ namespace eval ::highcharts {
             #
             # Use CDN
             #
-            # cloudflare has the following resources:
-            #
-            #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/highcharts.js
-            #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/highcharts.min.js
-            #
-            #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/modules/exporting.js
-            #    https://cdnjs.cloudflare.com/ajax/libs/highcharts/10.2.1/modules/exporting.min.js
-            #
             set prefix ${cdn}ajax/libs/highcharts/$version
             set cspMap [subst {
                 urn:ad:js:highcharts {
@@ -103,6 +95,7 @@ namespace eval ::highcharts {
             urnMap {} \
             versionCheckURL https://cdnjs.com/libraries/highcharts \
             versionCheckAPI {cdn cdnjs library highcharts count 5} \
+            vulnerabilityCheckURL https://snyk.io/advisor/npm-package/highcharts \
             installedVersion $version
 
         return $result

@@ -93,9 +93,8 @@ namespace eval ::highcharts {
             }] \
             cspMap $cspMap \
             urnMap {} \
-            versionCheckURL https://cdnjs.com/libraries/highcharts \
             versionCheckAPI {cdn cdnjs library highcharts count 5} \
-            vulnerabilityCheckURL https://snyk.io/advisor/npm-package/highcharts \
+            vulnerabilityCheck {service snyk library highcharts} \
             installedVersion $version
 
         return $result

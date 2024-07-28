@@ -108,20 +108,14 @@ namespace eval ::highcharts {
         installation of multiple versions.
     } {
         #
-        # If no version is specified, use the namespaced variable.
+        # Get resource_info for the specified version
         #
-        if {$version eq ""} {
-            set version ${::highcharts::version}
-        }
-
         set resource_info [resource_info -version $version]
-        ::util::resources::download \
-            -resource_info $resource_info \
-            -version_dir $version
-
         set resourceDir [dict get $resource_info resourceDir]
-        ns_log notice " ::highcharts::download resourceDir $resourceDir"
-
+        set versionDir [::util::resources::version_dir -resource_info $resource_info]
+        
+        ::util::resources::download -resource_info $resource_info
+        
         #
         # Do we have unzip installed?
         #
@@ -147,8 +141,8 @@ namespace eval ::highcharts {
             set fn [file tail $url]
             util::unzip \
                 -overwrite \
-                -source $resourceDir/$version/$fn \
-                -destination $resourceDir/$version
+                -source $resourceDir/$versionDir/$fn \
+                -destination $resourceDir/$versionDir
         }
     }
 

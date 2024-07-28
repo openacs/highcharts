@@ -5,9 +5,9 @@ ad_page_contract {
 } {
 }
 
-set version $::highcharts::version
 set resource_info [::highcharts::resource_info]
-set download_url download
+set version [dict get $resource_info installedVersion]
+set download_url download?version=$version
 
 set title "[dict get $resource_info resourceName] Package - Sitewide Admin"
 set context [list $title]

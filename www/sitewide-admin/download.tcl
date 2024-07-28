@@ -3,7 +3,7 @@ ad_page_contract {
 
     @creation-date Jan 04, 2017
 } {
-    {version:word,notnull ""}
+    {version:token,notnull ""}
 }
 
 ::highcharts::download -version $version

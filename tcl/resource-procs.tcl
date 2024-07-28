@@ -112,7 +112,7 @@ namespace eval ::highcharts {
         #
         set resource_info [resource_info -version $version]
         set resourceDir [dict get $resource_info resourceDir]
-        set versionDir [::util::resources::version_dir -resource_info $resource_info]
+        set versionSegment [::util::resources::version_segment -resource_info $resource_info]
         
         ::util::resources::download -resource_info $resource_info
         
@@ -141,8 +141,8 @@ namespace eval ::highcharts {
             set fn [file tail $url]
             util::unzip \
                 -overwrite \
-                -source $resourceDir/$versionDir/$fn \
-                -destination $resourceDir/$versionDir
+                -source $resourceDir/$versionSegment/$fn \
+                -destination $resourceDir/$versionSegment
         }
     }
 

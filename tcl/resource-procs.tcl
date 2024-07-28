@@ -48,7 +48,6 @@ namespace eval ::highcharts {
         # Setup variables for access via CDN vs. local resources.
         #
         set resourceDir [acs_package_root_dir highcharts/www/resources]
-        set resourceUrl /resources/highcharts/$version
         set cdnHost     cdnjs.cloudflare.com
         set cdn         //$cdnHost/
 
@@ -56,7 +55,7 @@ namespace eval ::highcharts {
             #
             # Local version is installed
             #
-            set prefix $resourceUrl/code
+            set prefix /resources/highcharts/$version/code
             set cdnHost ""
             set cspMap ""
         } else {

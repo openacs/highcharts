@@ -94,7 +94,7 @@ namespace eval ::highcharts {
             urnMap {} \
             versionCheckAPI {cdn cdnjs library highcharts count 5} \
             vulnerabilityCheck {service snyk library highcharts} \
-            installedVersion $version
+            configuredVersion $version
 
         return $result
     }

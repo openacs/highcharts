@@ -12,22 +12,20 @@ ad_library {
 }
 
 namespace eval ::highcharts {
-
-    set package_id [apm_package_id_from_key "highcharts"]
+    variable parameter_info
 
     #
-    # The Highcharts configuration can be tailored via the OpenACS
+    # The version configuration can be tailored via the OpenACS
     # configuration file:
     #
     #    ns_section ns/server/${server}/acs/highcharts
-    #        ns_param HighchartsVersion 11.4.0
+    #        ns_param HighchartsVersion 11.4.3
     #
-    #  For new versions, checkout https://cdnjs.com/
-    #
-    set ::highcharts::version [parameter::get \
-                                   -package_id $package_id \
-                                   -parameter HighchartsVersion \
-                                   -default 11.4.3]
+    set parameter_info {
+        package_key highcharts
+        parameter_name HighchartsVersion
+        default_value 11.4.3
+    }
 
     ad_proc ::highcharts::resource_info {
         {-version ""}
@@ -37,11 +35,17 @@ namespace eval ::highcharts {
         from the local filesystem, or from CDN.
 
     } {
+        variable parameter_info
         #
-        # If no version is specified, use the namespaced variable.
+        # If no version is specified, use the configured value.
         #
         if {$version eq ""} {
-            set version $::highcharts::version
+             dict with parameter_info {
+                 set version [::parameter::get_global_value \
+                                  -package_key $package_key \
+                                  -parameter $parameter_name \
+                                  -default $default_value]
+             }
         }
 
         #
@@ -94,6 +98,7 @@ namespace eval ::highcharts {
             urnMap {} \
             versionCheckAPI {cdn cdnjs library highcharts count 5} \
             vulnerabilityCheck {service snyk library highcharts} \
+            parameterInfo $parameter_info \
             configuredVersion $version
 
         return $result
@@ -112,9 +117,9 @@ namespace eval ::highcharts {
         set resource_info [resource_info -version $version]
         set resourceDir [dict get $resource_info resourceDir]
         set versionSegment [::util::resources::version_segment -resource_info $resource_info]
-        
+
         ::util::resources::download -resource_info $resource_info
-        
+
         #
         # Do we have unzip installed?
         #

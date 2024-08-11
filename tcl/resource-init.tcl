@@ -1,1 +1,1 @@
-::highcharts::register_urns
+::util::resources::register_urns -namespace highcharts

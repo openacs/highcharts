@@ -62,6 +62,11 @@ namespace eval ::highcharts {
             set prefix /resources/highcharts/$version/code
             set cdnHost ""
             set cspMap ""
+            dict set URNs urn:ad:js:highcharts $prefix/highcharts.js
+            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
+
         } else {
             #
             # Use CDN
@@ -72,11 +77,12 @@ namespace eval ::highcharts {
                     script-src $cdnHost
                 }}]
             #
+            # Use minified versions from CDN
             #
-            # Other potential sources:
-            #
-            # https://www.highcharts.com/blog/download/
-            # https://www.jsdelivr.com/package/npm/highcharts
+            dict set URNs urn:ad:js:highcharts $prefix/highcharts.min.js
+            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
         }
 
         #
@@ -95,7 +101,7 @@ namespace eval ::highcharts {
                 https://code.highcharts.com/zips/Highcharts-$version.zip
             }] \
             cspMap $cspMap \
-            urnMap {} \
+            urnMap $URNs \
             versionCheckAPI {cdn cdnjs library highcharts count 5} \
             vulnerabilityCheck {service snyk library highcharts} \
             parameterInfo $parameter_info \
@@ -149,43 +155,7 @@ namespace eval ::highcharts {
                 -destination $resourceDir/$versionSegment
         }
     }
-
-    ad_proc -private ::highcharts::register_urns {} {
-        Register URNs either with local or with CDN URLs.
-    } {
-        set resource_info [::highcharts::resource_info]
-        set prefix [dict get $resource_info prefix]
-
-        if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne ""} {
-            #
-            # Settings for the CDN, in case it differs
-            #
-            dict set URNs urn:ad:js:highcharts $prefix/highcharts.min.js
-            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
-            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
-            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
-
-        } else {
-            #
-            # Settings for local installs
-            #
-            dict set URNs urn:ad:js:highcharts $prefix/highcharts.js
-            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.js
-            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
-            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
-        }
-
-        foreach {URN resource} $URNs {
-            template::register_urn \
-                -urn $URN \
-                -resource $resource \
-                -csp_list [expr {[dict exists $resource_info cspMap $URN]
-                                 ? [dict get $resource_info cspMap $URN]
-                                 : ""}]
-        }
-    }
 }
-
 
 # Local variables:
 #    mode: tcl

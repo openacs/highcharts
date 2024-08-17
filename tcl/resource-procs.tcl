@@ -19,12 +19,12 @@ namespace eval ::highcharts {
     # configuration file:
     #
     #    ns_section ns/server/${server}/acs/highcharts
-    #        ns_param HighchartsVersion 11.4.6
+    #        ns_param HighchartsVersion 11.4.7
     #
     set parameter_info {
         package_key highcharts
         parameter_name HighchartsVersion
-        default_value 11.4.6
+        default_value 11.4.7
     }
 
     ad_proc ::highcharts::resource_info {
@@ -72,17 +72,15 @@ namespace eval ::highcharts {
             # Use CDN
             #
             set prefix ${cdn}ajax/libs/highcharts/$version
-            set cspMap [subst {
-                urn:ad:js:highcharts {
-                    script-src $cdnHost
-                }}]
             #
             # Use minified versions from CDN
             #
-            dict set URNs urn:ad:js:highcharts $prefix/highcharts.min.js
-            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.min.js
-            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.min.js
-            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.min.js
+            dict set URNs urn:ad:js:highcharts highcharts.min.js
+            dict set URNs urn:ad:js:highcharts-more highcharts-more.min.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting modules/exporting.min.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility modules/accessibility.min.js
+            
+            dict set cspMap urn:ad:js:highcharts script-src $cdnHost
         }
 
         #

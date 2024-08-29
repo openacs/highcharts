@@ -62,10 +62,10 @@ namespace eval ::highcharts {
             set prefix /resources/highcharts/$version/code
             set cdnHost ""
             set cspMap ""
-            dict set URNs urn:ad:js:highcharts $prefix/highcharts.js
-            dict set URNs urn:ad:js:highcharts-more $prefix/highcharts-more.js
-            dict set URNs urn:ad:js:highcharts/modules/exporting $prefix/modules/exporting.js
-            dict set URNs urn:ad:js:highcharts/modules/accessibility $prefix/modules/accessibility.js
+            dict set URNs urn:ad:js:highcharts highcharts.js
+            dict set URNs urn:ad:js:highcharts-more highcharts-more.js
+            dict set URNs urn:ad:js:highcharts/modules/exporting modules/exporting.js
+            dict set URNs urn:ad:js:highcharts/modules/accessibility modules/accessibility.js
 
         } else {
             #

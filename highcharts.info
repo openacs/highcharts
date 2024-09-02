@@ -11,6 +11,7 @@
 
     <version name="0.10" url="http://openacs.org/repository/download/apm/highcharts-0.10.apm">
         <owner url="mailto:neumann@wu-wien.ac.at">Gustaf Neumann</owner>
+        <release-date>2024-09-02</release-date>
         <description format="text/html">The Highcharts library is a JavaScript and TypeScript package for producing data visualizations (line/bar/pie charts etc.). The OpenACS package offers support to load this library either via CDN or from a local installation (via acs-admin and global administration UI).</description>
         <maturity>2</maturity>
 

@@ -15,7 +15,7 @@
         <maturity>2</maturity>
 
         <provides url="highcharts" version="0.10"/>
-        <requires url="acs-tcl" version="5.10.1b8"/>
+        <requires url="acs-tcl" version="5.10.1"/>
         
         <callbacks>
         </callbacks>

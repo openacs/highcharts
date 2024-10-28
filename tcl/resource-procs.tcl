@@ -19,12 +19,12 @@ namespace eval ::highcharts {
     # configuration file:
     #
     #    ns_section ns/server/${server}/acs/highcharts
-    #        ns_param HighchartsVersion 11.4.7
+    #        ns_param HighchartsVersion 11.4.8
     #
     set parameter_info {
         package_key highcharts
         parameter_name HighchartsVersion
-        default_value 11.4.7
+        default_value 11.4.8
     }
 
     ad_proc ::highcharts::resource_info {

@@ -9,13 +9,13 @@
     <implements-subsite-p>f</implements-subsite-p>
     <inherit-templates-p>f</inherit-templates-p>
 
-    <version name="0.12" url="http://openacs.org/repository/download/apm/highcharts-0.12.apm">
+    <version name="0.13" url="http://openacs.org/repository/download/apm/highcharts-0.13.apm">
         <owner url="mailto:neumann@wu-wien.ac.at">Gustaf Neumann</owner>
         <release-date>2024-09-02</release-date>
         <description format="text/html">The Highcharts library is a JavaScript and TypeScript package for producing data visualizations (line/bar/pie charts etc.). The OpenACS package offers support to load this library either via CDN or from a local installation (via acs-admin and global administration UI).</description>
         <maturity>2</maturity>
 
-        <provides url="highcharts" version="0.12"/>
+        <provides url="highcharts" version="0.13"/>
         <requires url="acs-tcl" version="5.10.1"/>
         
         <callbacks>

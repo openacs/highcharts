@@ -24,7 +24,7 @@ namespace eval ::highcharts {
     set parameter_info {
         package_key highcharts
         parameter_name HighchartsVersion
-        default_value 12.2.0
+        default_value 12.3.0
     }
 
     ad_proc ::highcharts::resource_info {
